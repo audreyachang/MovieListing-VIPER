@@ -8,5 +8,8 @@
 import UIKit
 
 extension MovieDetailViewController{
-    
+    func setup(){
+        self.title = "Movie Detail"
+        print("Welcome to the detail page")
+    }
 }

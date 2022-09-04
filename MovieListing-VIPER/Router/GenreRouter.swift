@@ -5,4 +5,13 @@
 //  Created by Audrey Aurelia Chang on 04/09/22.
 //
 
-import Foundation
+import UIKit
+
+extension GenreViewController{
+    func navigateToMovieList(genreId: Int){
+        let storyboard = UIStoryboard(name: "MovieListController", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MovieListController")as! MovieListViewController
+        vc.genreId = genreId
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}
