@@ -7,6 +7,20 @@
 
 import Foundation
 
-struct Entity{
-    
+struct Genre{
+    let genreId: Int
+    let genreName: String
 }
+
+extension Genre: Decodable{
+    enum CodingKeys: String, CodingKey{
+        case genreId = "id"
+        case genreName = "name"
+    }
+}
+
+struct Genres{
+    let genres: [Genre]
+}
+
+
