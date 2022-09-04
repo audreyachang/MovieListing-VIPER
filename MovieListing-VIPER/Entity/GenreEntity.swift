@@ -19,7 +19,7 @@ extension Genre: Decodable{
     }
 }
 
-struct Genres{
+struct Genres: Decodable{
     let genres: [Genre]
 }
 

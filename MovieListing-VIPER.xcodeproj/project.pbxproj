@@ -29,6 +29,7 @@
 		67DB662128C4C3190064CCB2 /* MovieEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB662028C4C3190064CCB2 /* MovieEntity.swift */; };
 		67DB662328C4C3330064CCB2 /* GenreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB662228C4C3330064CCB2 /* GenreRouter.swift */; };
 		67DB662528C4C3430064CCB2 /* MovieListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB662428C4C3430064CCB2 /* MovieListRouter.swift */; };
+		67DB662728C4C6B70064CCB2 /* MovieAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB662628C4C6B70064CCB2 /* MovieAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		67DB662028C4C3190064CCB2 /* MovieEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieEntity.swift; sourceTree = "<group>"; };
 		67DB662228C4C3330064CCB2 /* GenreRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreRouter.swift; sourceTree = "<group>"; };
 		67DB662428C4C3430064CCB2 /* MovieListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListRouter.swift; sourceTree = "<group>"; };
+		67DB662628C4C6B70064CCB2 /* MovieAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 				67DB65DE28C4BB180064CCB2 /* Assets.xcassets */,
 				67DB65E028C4BB180064CCB2 /* LaunchScreen.storyboard */,
 				67DB65E328C4BB180064CCB2 /* Info.plist */,
+				67DB662628C4C6B70064CCB2 /* MovieAPI.swift */,
 			);
 			path = "MovieListing-VIPER";
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				67DB660C28C4BD030064CCB2 /* GenreViewController.swift in Sources */,
+				67DB662728C4C6B70064CCB2 /* MovieAPI.swift in Sources */,
 				67DB661528C4BE850064CCB2 /* MovieListPresenter.swift in Sources */,
 				67DB661F28C4C3010064CCB2 /* GenreEntity.swift in Sources */,
 				67DB661728C4BE930064CCB2 /* MovieDetailPresenter.swift in Sources */,
