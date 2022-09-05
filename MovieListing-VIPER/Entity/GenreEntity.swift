@@ -17,10 +17,17 @@ extension Genre: Decodable{
         case genreId = "id"
         case genreName = "name"
     }
+    
+    init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        genreId = try container.decode(Int.self, forKey: .genreId)
+        genreName = try container.decode(String.self, forKey: .genreName)
+    }
 }
 
 struct Genres: Decodable{
     let genres: [Genre]
 }
+
 
 

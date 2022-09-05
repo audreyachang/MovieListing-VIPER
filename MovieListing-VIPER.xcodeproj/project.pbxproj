@@ -139,7 +139,6 @@
 				67DB65DE28C4BB180064CCB2 /* Assets.xcassets */,
 				67DB65E028C4BB180064CCB2 /* LaunchScreen.storyboard */,
 				67DB65E328C4BB180064CCB2 /* Info.plist */,
-				67DB662628C4C6B70064CCB2 /* MovieAPI.swift */,
 			);
 			path = "MovieListing-VIPER";
 			sourceTree = "<group>";
@@ -192,6 +191,7 @@
 		67DB660828C4BCE00064CCB2 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				67DB662628C4C6B70064CCB2 /* MovieAPI.swift */,
 				67DB660A28C4BD030064CCB2 /* GenreViewController.swift */,
 				67DB661828C4BEBC0064CCB2 /* MovieListViewController.swift */,
 				67DB661C28C4BF0C0064CCB2 /* MovieDetailViewController.swift */,
