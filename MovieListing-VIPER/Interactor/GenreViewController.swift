@@ -37,7 +37,7 @@ class GenreViewController: UIViewController {
 
 extension GenreViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        navigateToMovieList(genreId: genreData![indexPath.row])
     }
     
 }

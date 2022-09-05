@@ -11,14 +11,19 @@ class MovieListViewController: UIViewController {
 
     @IBOutlet weak var movieListTable: UITableView!
     
+    var genreId: Genre?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         movieListTable.delegate = self
         movieListTable.dataSource = self
-        print("This is the movie list page")
+        print("Directed from \(genreId?.genreId)")
     }
-    
+}
 
-   
+extension MovieListViewController{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigateToDetail(movieId: indexPath.row)
+    }
 }
