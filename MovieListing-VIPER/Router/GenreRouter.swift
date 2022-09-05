@@ -8,7 +8,7 @@
 import UIKit
 
 extension GenreViewController{
-    func navigateToMovieList(genreId: Int){
+    func navigateToMovieList(genreId: Genre){
         let storyboard = UIStoryboard(name: "MovieListController", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MovieListController")as! MovieListViewController
         vc.genreId = genreId

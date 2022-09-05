@@ -11,14 +11,14 @@ class MovieListViewController: UIViewController {
 
     @IBOutlet weak var movieListTable: UITableView!
     
-    var genreId: Int = 0
+    var genreId: Genre?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         movieListTable.delegate = self
         movieListTable.dataSource = self
-        print("Directed from \(genreId)")
+        print("Directed from \(genreId?.genreId)")
     }
 }
 
