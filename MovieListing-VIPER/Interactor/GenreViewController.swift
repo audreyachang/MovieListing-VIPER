@@ -20,13 +20,17 @@ class GenreViewController: UIViewController {
             }
         }
     }
+    
     var reviewData: [Review]?
+    var moviesData: [Movie]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         let genreManager = GenreManager()
         let reviewManager = ReviewManager()
+        let movieListManager = MovieListManager()
+        
         reviewManager.fetchReviews{(reviews) in
             self.reviewData = reviews.reviews
         }
@@ -34,6 +38,11 @@ class GenreViewController: UIViewController {
         genreManager.fetchGenre { (genres) in
             self.genreData = genres.genres
         }
+        
+        movieListManager.getMovieList { (movies) in
+            self.moviesData = movies.movies
+        }
+        
         genreListTable.dataSource = self
         genreListTable.delegate = self
         print("This is the Genre Page")

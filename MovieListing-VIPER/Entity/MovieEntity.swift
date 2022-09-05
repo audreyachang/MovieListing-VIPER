@@ -15,8 +15,8 @@ struct Movie{
     let moviePoster: String
     let releaseDate: String
     let genre: [Genre]?
-    let productionCompanies: [Companies]?
-    let productionCountries: [Countries]?
+//    let productionCompanies: [Companies]?
+//    let productionCountries: [Countries]?
 }
 
 struct Companies: Decodable{
@@ -73,8 +73,8 @@ extension Movie:Decodable{
         case moviePoster = "poster_path"
         case releaseDate = "release_date"
         case genre
-        case productionCompanies
-        case productionCountries
+//        case productionCompanies
+//        case productionCountries
     }
     
     init(from decoder: Decoder) throws{
@@ -85,7 +85,20 @@ extension Movie:Decodable{
         moviePoster = try container.decode(String.self, forKey: .moviePoster)
         releaseDate = try container.decode(String.self, forKey: .releaseDate)
         genre = try container.decodeIfPresent([Genre].self, forKey: .genre)
-        productionCompanies = try container.decodeIfPresent([Companies].self, forKey: .productionCompanies)
-        productionCountries = try container.decodeIfPresent([Countries].self, forKey: .productionCountries)
+//        productionCompanies = try container.decodeIfPresent([Companies].self, forKey: .productionCompanies)
+//        productionCountries = try container.decodeIfPresent([Countries].self, forKey: .productionCountries)
+    }
+}
+
+struct Movies: Decodable{
+    let movies: [Movie]?
+    
+    enum CodingKeys: String, CodingKey{
+        case movies = "results"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        movies = try container.decodeIfPresent([Movie].self, forKey: .movies)
     }
 }
