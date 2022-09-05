@@ -7,24 +7,56 @@
 
 import Foundation
 
+//MARK: Movie Entity
 struct Movie{
     let movieId: Int
+    let movieTitle: String
+    let movieSummary: String
+    let moviePoster: String
+    let releaseDate: String
 //    let genre: [Genre]
-    let movieName: String
-    let movieDirector: String
+//    let productionCompanies: [Companies]
+//    let productionCountries: [Countries]
+}
+
+struct Companies{
+    let companyName: String
+}
+
+struct Countries{
+    let countryName:String
+    
+}
+
+//MARK: Movie Trailer Entity
+struct MovieTrailer: Decodable{
+    let movieTrailerKey: String
+    
+    enum CodingKeys: String, CodingKey{
+        case movieTrailerKey = "key"
+    }
+    
+    init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        movieTrailerKey = try container.decode(String.self, forKey: .movieTrailerKey)
+    }
 }
 
 extension Movie:Decodable{
     enum CodingKeys: String, CodingKey{
         case movieId = "id"
-        case movieName = "name"
-        case movieDirector = "director"
+        case movieTitle = "original_title"
+        case movieSummary = "overview"
+        case moviePoster = "poster_path"
+        case releaseDate = "release_date"
     }
     
     init(from decoder: Decoder) throws{
         let container = try decoder.container(keyedBy: CodingKeys.self)
         movieId = try container.decode(Int.self, forKey: .movieId)
-        movieName = try container.decode(String.self, forKey: .movieName)
-        movieDirector = try container.decode(String.self, forKey: .movieDirector)
+        movieTitle = try container.decode(String.self, forKey: .movieTitle)
+        movieSummary = try container.decode(String.self, forKey: .movieSummary)
+        moviePoster = try container.decode(String.self, forKey: .moviePoster)
+        releaseDate = try container.decode(String.self, forKey: .releaseDate)
     }
 }

@@ -12,13 +12,16 @@ public var movieURL = "https://api.themoviedb.org/3/"
 class GenreViewController: UIViewController {
 
     @IBOutlet weak var genreListTable: UITableView!
-    var genreData: [Genre] = []
+    var genreData: [Genre]? {
+        didSet{
+            print("Genres are available")
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         let genreManager = GenreManager()
         genreManager.fetchGenre { (genres) in
-            print(genres)
             self.genreData = genres.genres
         }
         genreListTable.dataSource = self
