@@ -7,6 +7,27 @@
 
 import Foundation
 
-struct Entity{
-    
+struct Genre{
+    let genreId: Int
+    let genreName: String
 }
+
+extension Genre: Decodable{
+    enum CodingKeys: String, CodingKey{
+        case genreId = "id"
+        case genreName = "name"
+    }
+    
+    init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        genreId = try container.decode(Int.self, forKey: .genreId)
+        genreName = try container.decode(String.self, forKey: .genreName)
+    }
+}
+
+struct Genres: Decodable{
+    let genres: [Genre]
+}
+
+
+
