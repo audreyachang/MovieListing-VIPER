@@ -20,10 +20,17 @@ class GenreViewController: UIViewController {
             }
         }
     }
+    var reviewData: [Review]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         let genreManager = GenreManager()
+        let reviewManager = ReviewManager()
+        reviewManager.fetchReviews{(reviews) in
+            self.reviewData = reviews.reviews
+        }
+        
         genreManager.fetchGenre { (genres) in
             self.genreData = genres.genres
         }
