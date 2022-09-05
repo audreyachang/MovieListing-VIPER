@@ -16,11 +16,12 @@ extension GenreViewController{
 
 extension GenreViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return genreData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = genreListTable.dequeueReusableCell(withIdentifier: "GenreCell")!as UITableViewCell
+        let cell = genreListTable.dequeueReusableCell(withIdentifier: "GenreCell", for: indexPath)as! GenreCell
+        cell.genreTitle.text = genreData![indexPath.row].genreName
         return cell
     }
 }

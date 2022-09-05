@@ -15,6 +15,9 @@ class GenreViewController: UIViewController {
     var genreData: [Genre]? {
         didSet{
             print("Genres are available")
+            DispatchQueue.main.async { [self] in
+                genreListTable.reloadData()
+            }
         }
     }
     override func viewDidLoad() {
@@ -36,4 +39,5 @@ extension GenreViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
     }
+    
 }

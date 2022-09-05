@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		679061F228C5B0CA0005B00F /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679061F128C5B0CA0005B00F /* GenreCell.swift */; };
 		67DB65D628C4BB170064CCB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB65D528C4BB170064CCB2 /* AppDelegate.swift */; };
 		67DB65D828C4BB170064CCB2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB65D728C4BB170064CCB2 /* SceneDelegate.swift */; };
 		67DB65DA28C4BB170064CCB2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67DB65D928C4BB170064CCB2 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		679061F128C5B0CA0005B00F /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		67DB65D228C4BB170064CCB2 /* MovieListing-VIPER.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MovieListing-VIPER.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		67DB65D528C4BB170064CCB2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		67DB65D728C4BB170064CCB2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				67DB661028C4BDDC0064CCB2 /* GenrePresenter.swift */,
 				67DB661428C4BE850064CCB2 /* MovieListPresenter.swift */,
 				67DB661628C4BE930064CCB2 /* MovieDetailPresenter.swift */,
+				679061F128C5B0CA0005B00F /* GenreCell.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				67DB661928C4BEBC0064CCB2 /* MovieListViewController.swift in Sources */,
 				67DB662128C4C3190064CCB2 /* MovieEntity.swift in Sources */,
 				67DB65DA28C4BB170064CCB2 /* ViewController.swift in Sources */,
+				679061F228C5B0CA0005B00F /* GenreCell.swift in Sources */,
 				67DB65D628C4BB170064CCB2 /* AppDelegate.swift in Sources */,
 				67DB662528C4C3430064CCB2 /* MovieListRouter.swift in Sources */,
 				67DB65D828C4BB170064CCB2 /* SceneDelegate.swift in Sources */,
