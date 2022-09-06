@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
 
 class MovieDetailViewController: UIViewController {
     
@@ -23,10 +25,21 @@ class MovieDetailViewController: UIViewController {
         reviewTable.dataSource = self
         reviewTable.delegate = self
         print("This movie is \(movieId)")
-        // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func playTrailer(_ sender: UIButton) {
+        guard let url = URL(string: "https://www.youtube.com/watch?v=gdtZv3XROnc") else { return }
+        
+        let playVideo = AVPlayer(url: url)
+        
+        let videoPlayer = AVPlayerViewController()
+        videoPlayer.player = playVideo
+        
+        present(videoPlayer, animated: true){
+            playVideo.play()
+        }
+    }
+    
 
 
 }
