@@ -10,3 +10,33 @@ import UIKit
 public var movieURL = "https://api.themoviedb.org/3/"
 public var apiKey = "api_key=d6c9ce3a708d644c2a256a1e16f76c52"
 public var language = "language=en-US"
+public var imageBase = "https://image.tmdb.org/t/p/w500/"
+
+extension UIImageView {
+    func loadImage(url: URL){
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url){
+                if let image = UIImage(data: data){
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
+}
+
+public func dateFormatter(date: String)->String{
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    
+    let newDateFormat = DateFormatter()
+    newDateFormat.dateFormat = "MMM d, yyyy"
+    
+    let dateString = dateFormatter.date(from: date)
+    let newDate = newDateFormat.string(from: dateString!)
+    
+    return newDate
+}
