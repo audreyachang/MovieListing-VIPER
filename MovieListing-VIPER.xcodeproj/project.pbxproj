@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		670DAD4028C6DE9B0013A043 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670DAD3F28C6DE9B0013A043 /* GlobalVariables.swift */; };
+		670DAD4228C761FD0013A043 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 670DAD4128C761FD0013A043 /* ReviewCell.swift */; };
 		679061F228C5B0CA0005B00F /* GenreCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679061F128C5B0CA0005B00F /* GenreCell.swift */; };
 		679061F428C5B5EF0005B00F /* MovieListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679061F328C5B5EF0005B00F /* MovieListCell.swift */; };
 		679061F628C5BAC10005B00F /* ReviewEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 679061F528C5BAC10005B00F /* ReviewEntity.swift */; };
@@ -55,6 +56,7 @@
 
 /* Begin PBXFileReference section */
 		670DAD3F28C6DE9B0013A043 /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		670DAD4128C761FD0013A043 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		679061F128C5B0CA0005B00F /* GenreCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCell.swift; sourceTree = "<group>"; };
 		679061F328C5B5EF0005B00F /* MovieListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCell.swift; sourceTree = "<group>"; };
 		679061F528C5BAC10005B00F /* ReviewEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewEntity.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 				67DB661628C4BE930064CCB2 /* MovieDetailPresenter.swift */,
 				679061F128C5B0CA0005B00F /* GenreCell.swift */,
 				679061F328C5B5EF0005B00F /* MovieListCell.swift */,
+				670DAD4128C761FD0013A043 /* ReviewCell.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				67DB662728C4C6B70064CCB2 /* MovieAPI.swift in Sources */,
 				67DB661528C4BE850064CCB2 /* MovieListPresenter.swift in Sources */,
 				67DB661F28C4C3010064CCB2 /* GenreEntity.swift in Sources */,
+				670DAD4228C761FD0013A043 /* ReviewCell.swift in Sources */,
 				67DB661728C4BE930064CCB2 /* MovieDetailPresenter.swift in Sources */,
 				67DB661928C4BEBC0064CCB2 /* MovieListViewController.swift in Sources */,
 				67DB662128C4C3190064CCB2 /* MovieEntity.swift in Sources */,
