@@ -17,13 +17,14 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var reviewTable: UITableView!
     
     var movieId: Int = 0
+    var currentMovie: Movie?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         reviewTable.dataSource = self
         reviewTable.delegate = self
         print("This movie is \(movieId)")
-        // Do any additional setup after loading the view.
     }
     
 
