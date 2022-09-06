@@ -29,7 +29,6 @@ class GenreViewController: UIViewController {
         setup()
         let genreManager = GenreManager()
         let reviewManager = ReviewManager()
-        let movieListManager = MovieListManager()
         let movieDetailManager = MovieDetailManager()
         
         movieDetailManager.fetchMovie(movieId: 19) { (movie) in
@@ -43,10 +42,6 @@ class GenreViewController: UIViewController {
             self.genreData = genres.genres
         }
 
-        movieListManager.getMovieList(genreId: 28) { (movies) in
-            self.moviesData = movies.movies
-        }
-        
         genreListTable.dataSource = self
         genreListTable.delegate = self
         print("This is the Genre Page")

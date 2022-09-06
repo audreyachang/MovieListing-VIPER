@@ -65,16 +65,27 @@ struct MovieTrailer: Decodable{
     }
 }
 
+struct MovieTrailers: Decodable{
+    let movieTrailer: [MovieTrailer]?
+    
+    enum CodingKeys: String, CodingKey{
+        case movieTrailer = "results"
+    }
+    
+    init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        movieTrailer = try container.decodeIfPresent([MovieTrailer].self, forKey: .movieTrailer)
+    }
+}
+
 extension Movie:Decodable{
     enum CodingKeys: String, CodingKey{
         case movieId = "id"
-        case movieTitle = "original_title"
+        case movieTitle = "title"
         case movieSummary = "overview"
         case moviePoster = "poster_path"
         case releaseDate = "release_date"
         case genre
-//        case productionCompanies
-//        case productionCountries
     }
     
     init(from decoder: Decoder) throws{
@@ -85,8 +96,6 @@ extension Movie:Decodable{
         moviePoster = try container.decode(String.self, forKey: .moviePoster)
         releaseDate = try container.decode(String.self, forKey: .releaseDate)
         genre = try container.decodeIfPresent([Genre].self, forKey: .genre)
-//        productionCompanies = try container.decodeIfPresent([Companies].self, forKey: .productionCompanies)
-//        productionCountries = try container.decodeIfPresent([Countries].self, forKey: .productionCountries)
     }
 }
 

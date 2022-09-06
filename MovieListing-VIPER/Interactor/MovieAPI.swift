@@ -109,3 +109,30 @@ struct ReviewManager{
     }
 }
 
+struct MovieTrailerManager{
+    func fetchTrailer(movieId:Int, completion: @escaping(MovieTrailers)->Void){
+        guard let url = URL(string: movieURL+"movie/\(String(movieId))/videos?"+apiKey+"&"+language) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Failed to retrieve trailer: \(error.localizedDescription)")
+            }
+            
+            guard let jsonData = data else { return }
+            
+            let decoder = JSONDecoder()
+            
+            do{
+                let trailerData = try decoder.decode(MovieTrailers.self, from: jsonData)
+                print(trailerData)
+                completion(trailerData)
+            }
+            catch{
+             print("Unable to decode data")
+            }
+        }.resume()
+    }
+}
+
+
+

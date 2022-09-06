@@ -10,17 +10,21 @@ import UIKit
 extension MovieListViewController{
     func setupView(){
         self.title = genreId?.genreName
+        self.navigationItem.backButtonTitle = ""
     }
 }
 
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return moviesData?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = movieListTable.dequeueReusableCell(withIdentifier: "movieListCell")as! MovieListCell
-        cell.posterImage.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w92/hUK9rewffKGqtXynH5SW3v9hzcu.jpg")!)
+        let moviePoster = moviesData![indexPath.row].moviePoster
+        cell.posterImage.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w92/\(String(moviePoster))")!)
+        cell.movieTitle.text = moviesData![indexPath.row].movieTitle
+        cell.releaseDate.text = "Released on:" + "\n" + dateFormatter(date: moviesData![indexPath.row].releaseDate)
         return cell
     }
     
@@ -31,16 +35,4 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
     
 }
 
-extension UIImageView {
-    func loadImage(url: URL){
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url){
-                if let image = UIImage(data: data){
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
-}
+

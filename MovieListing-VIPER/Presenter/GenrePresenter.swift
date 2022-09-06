@@ -10,7 +10,7 @@ import UIKit
 extension GenreViewController{
     func setup(){
         self.title = "Genre"
-        self.navigationItem.backButtonTitle = "Genres"
+        self.navigationItem.backButtonTitle = ""
     }
 }
 
