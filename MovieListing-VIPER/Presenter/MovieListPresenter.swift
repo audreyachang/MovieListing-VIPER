@@ -8,12 +8,14 @@
 import UIKit
 
 extension MovieListViewController{
+    //MARK: Movie List view set up function
     func setupView(){
         self.title = genreId?.genreName
         self.navigationItem.backButtonTitle = ""
     }
 }
 
+//MARK: Movie List Table Set Up
 extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moviesData?.count ?? 0

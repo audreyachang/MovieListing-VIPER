@@ -7,7 +7,8 @@
 
 import Foundation
 
-//MARK: Movie Entity
+//MARK: Structs for Movie and Movies data model
+
 struct Movie{
     let movieId: Int
     let movieTitle: String
@@ -30,49 +31,6 @@ struct Companies: Decodable{
         let container = try decoder.container(keyedBy: CodingKeys.self)
         companyId = try container.decode(Int.self, forKey: .companyId)
         companyName = try container.decode(String.self, forKey: .companyName)
-    }
-}
-
-struct Countries: Decodable{
-    let countryISO: Int
-    let countryName:String
-    
-    enum CodingKeys: String, CodingKey{
-        case countryISO = "iso_3166_1"
-        case countryName = "name"
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        countryISO = try container.decode(Int.self, forKey: .countryISO)
-        countryName = try container.decode(String.self, forKey: .countryName)
-    }
-}
-
-//MARK: Movie Trailer Entity
-struct MovieTrailer: Decodable{
-    let movieTrailerKey: String
-    
-    enum CodingKeys: String, CodingKey{
-        case movieTrailerKey = "key"
-    }
-    
-    init(from decoder: Decoder) throws{
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        movieTrailerKey = try container.decode(String.self, forKey: .movieTrailerKey)
-    }
-}
-
-struct MovieTrailers: Decodable{
-    let movieTrailer: [MovieTrailer]?
-    
-    enum CodingKeys: String, CodingKey{
-        case movieTrailer = "results"
-    }
-    
-    init(from decoder: Decoder) throws{
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        movieTrailer = try container.decodeIfPresent([MovieTrailer].self, forKey: .movieTrailer)
     }
 }
 
@@ -107,5 +65,32 @@ struct Movies: Decodable{
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         movies = try container.decodeIfPresent([Movie].self, forKey: .movies)
+    }
+}
+
+//MARK: Movie Trailer Entity
+struct MovieTrailer: Decodable{
+    let movieTrailerKey: String
+    
+    enum CodingKeys: String, CodingKey{
+        case movieTrailerKey = "key"
+    }
+    
+    init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        movieTrailerKey = try container.decode(String.self, forKey: .movieTrailerKey)
+    }
+}
+
+struct MovieTrailers: Decodable{
+    let movieTrailer: [MovieTrailer]?
+    
+    enum CodingKeys: String, CodingKey{
+        case movieTrailer = "results"
+    }
+    
+    init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        movieTrailer = try container.decodeIfPresent([MovieTrailer].self, forKey: .movieTrailer)
     }
 }

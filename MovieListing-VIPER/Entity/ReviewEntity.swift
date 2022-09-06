@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: Structs for Review and Reviews data model
 struct Review{
     let author: String
     let content: String

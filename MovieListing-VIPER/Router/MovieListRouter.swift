@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: Navigation Logic for Movie List
 extension MovieListViewController{
     func navigateToDetail(movieId: Int, currentMovie: Movie){
         let storyboard = UIStoryboard(name: "MovieDetailViewController", bundle: nil)

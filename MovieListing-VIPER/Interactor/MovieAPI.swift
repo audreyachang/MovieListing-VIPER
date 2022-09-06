@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: Function to fetch Genre data from API
 struct GenreManager{
     func fetchGenre(completion: @escaping(Genres)->Void){
         guard let url = URL(string: movieURL+"genre/movie/list?"+apiKey+"&"+language) else {return}
@@ -31,6 +32,7 @@ struct GenreManager{
     }
 }
 
+//MARK: Function to fetch Movies by Genre from API
 struct MovieListManager{
     func getMovieList(genreId:Int, completion: @escaping(Movies)->Void){
         guard let url = URL(string: movieURL+"discover/movie?"+apiKey+"&"+language+"&sort_by=popularity.desc&with_genres="+String(genreId)+"&with_watch_monetization_types=flatrate") else { return }
@@ -47,7 +49,6 @@ struct MovieListManager{
                 
                 do {
                     let moviesData = try decoder.decode(Movies.self, from: jsonData)
-                    print(moviesData)
                     completion(moviesData)
                 }
                 catch
@@ -58,6 +59,7 @@ struct MovieListManager{
     }
 }
 
+//MARK: Function to fetch Movie data from API
 struct MovieDetailManager{
     func fetchMovie(movieId: Int, completion: @escaping(Movie)->Void){
         guard let url = URL(string: movieURL+"/movie/"+String(movieId)+"?"+apiKey+"&"+language) else { return }
@@ -84,6 +86,7 @@ struct MovieDetailManager{
     }
 }
 
+//MARK: Function to fetch Reviews from API
 struct ReviewManager{
     func fetchReviews(reviewId: Int,completion: @escaping(Reviews)->Void){
         guard let url = URL(string: movieURL+"movie/\(String(reviewId))/reviews?"+apiKey+"&"+language) else { return }
@@ -108,6 +111,7 @@ struct ReviewManager{
     }
 }
 
+//MARK: Function to fetch trailer key from API
 struct MovieTrailerManager{
     func fetchTrailer(movieId:Int, completion: @escaping(MovieTrailers)->Void){
         guard let url = URL(string: movieURL+"movie/\(String(movieId))/videos?"+apiKey+"&"+language) else { return }
@@ -123,7 +127,6 @@ struct MovieTrailerManager{
             
             do{
                 let trailerData = try decoder.decode(MovieTrailers.self, from: jsonData)
-                print(trailerData)
                 completion(trailerData)
             }
             catch{

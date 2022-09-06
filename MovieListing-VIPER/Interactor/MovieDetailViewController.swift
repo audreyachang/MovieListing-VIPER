@@ -11,6 +11,7 @@ import AVFoundation
 
 class MovieDetailViewController: UIViewController {
     
+    //MARK: Outlet and variable declaration
     @IBOutlet weak var moviePoster: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieDate: UILabel!
@@ -43,6 +44,7 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //MARK: Call set up function + data & table preparation
         setup()
         reviewTable.dataSource = self
         reviewTable.delegate = self
@@ -60,6 +62,7 @@ class MovieDetailViewController: UIViewController {
         }
     }
     
+    //MARK: Button action and validation
     @IBAction func playTrailer(_ sender: UIButton) {
         if trailerKey != ""{
             if let url = URL(string: "https://www.youtube.com/watch?v=\(trailerKey)"){
@@ -73,6 +76,7 @@ class MovieDetailViewController: UIViewController {
     }
 }
 
+//MARK: Review Table content
 extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if reviewData?.count == 0 {

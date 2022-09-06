@@ -8,12 +8,14 @@
 import UIKit
 
 extension GenreViewController{
+    //MARK: Set up function for Genre View Controller
     func setup(){
         self.title = "Genre"
         self.navigationItem.backButtonTitle = ""
     }
 }
 
+//MARK: Genre List Table Set Up
 extension GenreViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return genreData?.count ?? 0

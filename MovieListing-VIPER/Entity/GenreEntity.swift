@@ -7,6 +7,7 @@
 
 import Foundation
 
+//MARK: Struct for Genre and Genres data model
 struct Genre{
     let genreId: Int
     let genreName: String

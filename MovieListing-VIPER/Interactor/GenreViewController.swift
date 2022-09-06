@@ -9,11 +9,10 @@ import UIKit
 
 
 class GenreViewController: UIViewController {
-
+    //MARK: Outlet and variable declaration
     @IBOutlet weak var genreListTable: UITableView!
     var genreData: [Genre]? {
         didSet{
-            print("Genres are available")
             DispatchQueue.main.async { [self] in
                 genreListTable.reloadData()
             }
@@ -23,6 +22,7 @@ class GenreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //MARK: Call view setup function and retrieve needed data
         setup()
         let genreManager = GenreManager()
 
@@ -36,6 +36,7 @@ class GenreViewController: UIViewController {
 
 }
 
+//MARK: Navigation Logic
 extension GenreViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigateToMovieList(genreId: genreData![indexPath.row])

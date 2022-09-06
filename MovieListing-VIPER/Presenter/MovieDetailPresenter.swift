@@ -8,6 +8,7 @@
 import UIKit
 
 extension MovieDetailViewController{
+    //MARK: Movie detail content set up and value assignment
     func setup(){
         self.title = currentMovie?.movieTitle
         self.movieTitle.text = currentMovie?.movieTitle
@@ -21,9 +22,7 @@ extension MovieDetailViewController{
         self.emptyReviews.isHidden = true
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
-    }
+    //MARK: Review Table view set up
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200

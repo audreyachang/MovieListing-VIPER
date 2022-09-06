@@ -7,11 +7,13 @@
 
 import UIKit
 
+//MARK: Publicly used variables for API call
 public var movieURL = "https://api.themoviedb.org/3/"
 public var apiKey = "api_key=d6c9ce3a708d644c2a256a1e16f76c52"
 public var language = "language=en-US"
 public var imageBase = "https://image.tmdb.org/t/p/w500/"
 
+//MARK: Decode image data function
 extension UIImageView {
     func loadImage(url: URL){
         DispatchQueue.global().async { [weak self] in
@@ -26,6 +28,7 @@ extension UIImageView {
     }
 }
 
+//MARK: Function to convert Date String to another format
 public func dateFormatter(date: String)->String{
     
     let dateFormatter = DateFormatter()
