@@ -34,7 +34,6 @@ class MovieDetailViewController: UIViewController {
     
     var movieTrailer: [MovieTrailer]?{
         didSet{
-            print("Fetched trailer Data")
             if movieTrailer?.isEmpty == false{
                 trailerKey = movieTrailer?[0].movieTrailerKey ?? ""}
         }
@@ -47,7 +46,6 @@ class MovieDetailViewController: UIViewController {
         setup()
         reviewTable.dataSource = self
         reviewTable.delegate = self
-        print("This movie is \(movieId)")
         
         let movieTrailerManager = MovieTrailerManager()
         let reviewManager = ReviewManager()
@@ -90,11 +88,10 @@ extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource{
             emptyReviews.isHidden = false
             reviewTable.isHidden = true
             emptyReviews.text = "There are no reviews available for this movie"
-            print("There are no reviews available")
         }else{
             emptyReviews.isHidden = true
             reviewTable.isHidden = false
-            cell.reviewAuthor.text = reviewData?[indexPath.row].author ?? ""
+            cell.reviewAuthor.text = "Written By: " + (reviewData?[indexPath.row].author)! ?? ""
             cell.reviewContent.text = reviewData?[indexPath.row].content ?? ""
         }
         return cell

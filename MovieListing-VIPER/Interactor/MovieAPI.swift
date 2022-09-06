@@ -74,8 +74,7 @@ struct MovieDetailManager{
             
             do{
                 let movieDetail = try decoder.decode(Movie.self, from: jsonData)
-                print(movieDetail
-                )
+                
                 completion(movieDetail)
             }
             catch{

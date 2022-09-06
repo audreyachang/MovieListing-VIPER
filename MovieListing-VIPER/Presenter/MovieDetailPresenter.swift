@@ -19,7 +19,6 @@ extension MovieDetailViewController{
         self.reviewLabel.text = "Movie Reviews"
         self.trailerButton.layer.cornerRadius = 15
         self.emptyReviews.isHidden = true
-        print("Welcome to the detail page")
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

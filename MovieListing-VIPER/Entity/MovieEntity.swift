@@ -15,8 +15,6 @@ struct Movie{
     let moviePoster: String
     let releaseDate: String
     let genre: [Genre]?
-//    let productionCompanies: [Companies]?
-//    let productionCountries: [Countries]?
 }
 
 struct Companies: Decodable{
