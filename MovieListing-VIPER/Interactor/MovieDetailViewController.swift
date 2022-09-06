@@ -28,21 +28,12 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func playTrailer(_ sender: UIButton) {
-        guard let url = URL(string: "https://www.youtube.com/watch?v=gdtZv3XROnc") else { return }
-        
-        let playVideo = AVPlayer(url: url)
-        
-        let videoPlayer = AVPlayerViewController()
-        videoPlayer.player = playVideo
-        
-        present(videoPlayer, animated: true){
-            playVideo.play()
+        if let url = URL(string: "https://www.youtube.com/watch?v=gdtZv3XROnc"){
+            UIApplication.shared.open(url)
+            }
         }
+      
     }
-    
-
-
-}
 
 extension MovieDetailViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
