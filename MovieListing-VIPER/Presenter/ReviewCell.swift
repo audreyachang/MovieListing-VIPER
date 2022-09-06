@@ -1,17 +1,16 @@
 //
-//  MovieListCell.swift
+//  ReviewCell.swift
 //  MovieListing-VIPER
 //
-//  Created by Audrey Aurelia Chang on 05/09/22.
+//  Created by Audrey Aurelia Chang on 06/09/22.
 //
 
 import UIKit
 
-class MovieListCell: UITableViewCell {
+class ReviewCell: UITableViewCell {
 
-    @IBOutlet weak var posterImage: UIImageView!
-    @IBOutlet weak var movieTitle: UILabel!
-    @IBOutlet weak var releaseDate: UILabel!
+    @IBOutlet weak var reviewAuthor: UILabel!
+    @IBOutlet weak var reviewContent: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

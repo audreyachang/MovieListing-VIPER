@@ -7,6 +7,7 @@
 
 import UIKit
 
+//MARK: Navigation Logic for Genre List
 extension GenreViewController{
     func navigateToMovieList(genreId: Genre){
         let storyboard = UIStoryboard(name: "MovieListController", bundle: nil)

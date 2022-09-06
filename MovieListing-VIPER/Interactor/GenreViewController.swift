@@ -9,52 +9,34 @@ import UIKit
 
 
 class GenreViewController: UIViewController {
-
+    //MARK: Outlet and variable declaration
     @IBOutlet weak var genreListTable: UITableView!
     var genreData: [Genre]? {
         didSet{
-            print("Genres are available")
             DispatchQueue.main.async { [self] in
                 genreListTable.reloadData()
             }
         }
     }
     
-    var reviewData: [Review]?
-    var moviesData: [Movie]?
-    var movieData: Movie?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //MARK: Call view setup function and retrieve needed data
         setup()
         let genreManager = GenreManager()
-        let reviewManager = ReviewManager()
-        let movieListManager = MovieListManager()
-        let movieDetailManager = MovieDetailManager()
-        
-        movieDetailManager.fetchMovie(movieId: 19) { (movie) in
-            self.movieData = movie
-        }
-        reviewManager.fetchReviews(reviewId: 19){(reviews) in
-            self.reviewData = reviews.reviews
-        }
 
         genreManager.fetchGenre { (genres) in
             self.genreData = genres.genres
         }
 
-        movieListManager.getMovieList(genreId: 28) { (movies) in
-            self.moviesData = movies.movies
-        }
-        
         genreListTable.dataSource = self
         genreListTable.delegate = self
-        print("This is the Genre Page")
-        // Do any additional setup after loading the view.
     }
 
 }
 
+//MARK: Navigation Logic
 extension GenreViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigateToMovieList(genreId: genreData![indexPath.row])

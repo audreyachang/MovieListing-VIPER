@@ -7,7 +7,8 @@
 
 import Foundation
 
-//MARK: Movie Entity
+//MARK: Structs for Movie and Movies data model
+
 struct Movie{
     let movieId: Int
     let movieTitle: String
@@ -15,8 +16,6 @@ struct Movie{
     let moviePoster: String
     let releaseDate: String
     let genre: [Genre]?
-//    let productionCompanies: [Companies]?
-//    let productionCountries: [Countries]?
 }
 
 struct Companies: Decodable{
@@ -35,19 +34,37 @@ struct Companies: Decodable{
     }
 }
 
-struct Countries: Decodable{
-    let countryISO: Int
-    let countryName:String
+extension Movie:Decodable{
+    enum CodingKeys: String, CodingKey{
+        case movieId = "id"
+        case movieTitle = "title"
+        case movieSummary = "overview"
+        case moviePoster = "poster_path"
+        case releaseDate = "release_date"
+        case genre
+    }
+    
+    init(from decoder: Decoder) throws{
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        movieId = try container.decode(Int.self, forKey: .movieId)
+        movieTitle = try container.decode(String.self, forKey: .movieTitle)
+        movieSummary = try container.decode(String.self, forKey: .movieSummary)
+        moviePoster = try container.decode(String.self, forKey: .moviePoster)
+        releaseDate = try container.decode(String.self, forKey: .releaseDate)
+        genre = try container.decodeIfPresent([Genre].self, forKey: .genre)
+    }
+}
+
+struct Movies: Decodable{
+    let movies: [Movie]?
     
     enum CodingKeys: String, CodingKey{
-        case countryISO = "iso_3166_1"
-        case countryName = "name"
+        case movies = "results"
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        countryISO = try container.decode(Int.self, forKey: .countryISO)
-        countryName = try container.decode(String.self, forKey: .countryName)
+        movies = try container.decodeIfPresent([Movie].self, forKey: .movies)
     }
 }
 
@@ -65,40 +82,15 @@ struct MovieTrailer: Decodable{
     }
 }
 
-extension Movie:Decodable{
+struct MovieTrailers: Decodable{
+    let movieTrailer: [MovieTrailer]?
+    
     enum CodingKeys: String, CodingKey{
-        case movieId = "id"
-        case movieTitle = "original_title"
-        case movieSummary = "overview"
-        case moviePoster = "poster_path"
-        case releaseDate = "release_date"
-        case genre
-//        case productionCompanies
-//        case productionCountries
+        case movieTrailer = "results"
     }
     
     init(from decoder: Decoder) throws{
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        movieId = try container.decode(Int.self, forKey: .movieId)
-        movieTitle = try container.decode(String.self, forKey: .movieTitle)
-        movieSummary = try container.decode(String.self, forKey: .movieSummary)
-        moviePoster = try container.decode(String.self, forKey: .moviePoster)
-        releaseDate = try container.decode(String.self, forKey: .releaseDate)
-        genre = try container.decodeIfPresent([Genre].self, forKey: .genre)
-//        productionCompanies = try container.decodeIfPresent([Companies].self, forKey: .productionCompanies)
-//        productionCountries = try container.decodeIfPresent([Countries].self, forKey: .productionCountries)
-    }
-}
-
-struct Movies: Decodable{
-    let movies: [Movie]?
-    
-    enum CodingKeys: String, CodingKey{
-        case movies = "results"
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        movies = try container.decodeIfPresent([Movie].self, forKey: .movies)
+        movieTrailer = try container.decodeIfPresent([MovieTrailer].self, forKey: .movieTrailer)
     }
 }

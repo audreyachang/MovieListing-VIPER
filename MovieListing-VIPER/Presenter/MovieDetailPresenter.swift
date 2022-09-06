@@ -8,24 +8,23 @@
 import UIKit
 
 extension MovieDetailViewController{
+    //MARK: Movie detail content set up and value assignment
     func setup(){
-        self.title = "Movie Detail"
-        print("Welcome to the detail page")
+        self.title = currentMovie?.movieTitle
+        self.movieTitle.text = currentMovie?.movieTitle
+        self.movieDate.text = "Starts airing on:\n"
+        self.movieDate.text! += dateFormatter(date: currentMovie!.releaseDate)
+        self.movieProduction.text = "Movie Synopsis: \n"
+        self.movieProduction.text! += currentMovie?.movieSummary ?? ""
+        self.moviePoster.loadImage(url: URL(string: imageBase+currentMovie!.moviePoster)!)
+        self.reviewLabel.text = "Movie Reviews"
+        self.trailerButton.layer.cornerRadius = 15
+        self.emptyReviews.isHidden = true
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
-    }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let sectionHeader = UIView.init(frame: CGRect.init(x: 0, y: 0, width: reviewTable.frame.width, height: 20))
-        
-        let titleLabel = UILabel()
-        titleLabel.frame = CGRect.init(x: 8, y: 0, width: sectionHeader.frame.width-8, height: 16)
-        titleLabel.text = "Reviews"
-        titleLabel.font = .systemFont(ofSize: 16)
-        titleLabel.textColor = .black
-        
-        sectionHeader.addSubview(titleLabel)
-        return sectionHeader
+    //MARK: Review Table view set up
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
     }
 }
