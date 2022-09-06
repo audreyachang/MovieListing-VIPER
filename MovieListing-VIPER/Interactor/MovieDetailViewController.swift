@@ -19,6 +19,8 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var reviewTable: UITableView!
     
     var movieId: Int = 0
+    var currentMovie: Movie?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()

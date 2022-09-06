@@ -9,7 +9,7 @@ import UIKit
 
 struct GenreManager{
     func fetchGenre(completion: @escaping(Genres)->Void){
-        guard let url = URL(string: movieURL+"genre/movie/list?api_key=d6c9ce3a708d644c2a256a1e16f76c52&language=en-US") else {return}
+        guard let url = URL(string: movieURL+"genre/movie/list?"+apiKey+"&"+language) else {return}
         
         URLSession.shared.dataTask(with: url) { data, _, error in
             if let error = error {
@@ -31,10 +31,81 @@ struct GenreManager{
     }
 }
 
-func getMovieList(from url: String){
+struct MovieListManager{
+    func getMovieList(genreId:Int, completion: @escaping(Movies)->Void){
+        guard let url = URL(string: movieURL+"discover/movie?"+apiKey+"&"+language+"&sort_by=popularity.desc&with_genres="+String(genreId)+"&with_watch_monetization_types=flatrate") else { return }
     
+    URLSession.shared
+            .dataTask(with: url) { data, _, error in
+                if let error = error {
+                    print("Unable to get data \(error.localizedDescription)")
+                }
+                
+                guard let jsonData = data else {return}
+                print(jsonData)
+                let decoder = JSONDecoder()
+                
+                do {
+                    let moviesData = try decoder.decode(Movies.self, from: jsonData)
+                    print(moviesData)
+                    completion(moviesData)
+                }
+                catch
+                {
+                    print("Unable to decode movie data")
+                }
+            }.resume()
+    }
 }
 
-func getMovieDetail(from url: String){
-    
+struct MovieDetailManager{
+    func fetchMovie(movieId: Int, completion: @escaping(Movie)->Void){
+        guard let url = URL(string: movieURL+"/movie/"+String(movieId)+"?"+apiKey+"&"+language) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Unable to retrieve movie data: \(error.localizedDescription)")
+            }
+            
+            guard let jsonData = data else { return }
+            print(jsonData)
+            
+            let decoder = JSONDecoder()
+            
+            do{
+                let movieDetail = try decoder.decode(Movie.self, from: jsonData)
+                print(movieDetail
+                )
+                completion(movieDetail)
+            }
+            catch{
+                print("Unable to decode movie data")
+            }
+        }.resume()
+    }
 }
+
+struct ReviewManager{
+    func fetchReviews(reviewId: Int,completion: @escaping(Reviews)->Void){
+        guard let url = URL(string: movieURL+"movie/\(String(reviewId))/reviews?"+apiKey+"&"+language) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                print("Unable to retrieve reviews: \(error.localizedDescription)")
+            }
+            
+            guard let jsonData = data else { return }
+            
+            let decoder = JSONDecoder()
+            
+            do{
+                let reviewData = try decoder.decode(Reviews.self, from: jsonData)
+                completion(reviewData)
+            }
+            catch{
+                print("Unable to decode review data")
+            }
+        }.resume()
+    }
+}
+
