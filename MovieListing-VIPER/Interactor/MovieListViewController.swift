@@ -26,4 +26,6 @@ extension MovieListViewController{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigateToDetail(movieId: indexPath.row)
     }
+    
+    
 }

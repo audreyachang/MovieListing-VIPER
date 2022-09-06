@@ -19,7 +19,8 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = movieListTable.dequeueReusableCell(withIdentifier: "movieListCell")! as UITableViewCell
+        let cell = movieListTable.dequeueReusableCell(withIdentifier: "movieListCell")as! MovieListCell
+        cell.posterImage.loadImage(url: URL(string: "https://image.tmdb.org/t/p/w92/hUK9rewffKGqtXynH5SW3v9hzcu.jpg")!)
         return cell
     }
     
@@ -28,4 +29,18 @@ extension MovieListViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     
+}
+
+extension UIImageView {
+    func loadImage(url: URL){
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url){
+                if let image = UIImage(data: data){
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
+    }
 }
